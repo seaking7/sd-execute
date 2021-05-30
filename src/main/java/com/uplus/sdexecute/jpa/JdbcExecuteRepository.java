@@ -24,6 +24,18 @@ public class JdbcExecuteRepository {
         return result.stream().findAny();
     }
 
+    public Iterable<ExecuteDto> findContentsAll(){
+        List<ExecuteDto> result
+                = jdbcTemplate.query("select content_id, content_name, url from contents",
+                executeDtoRowMapper());
+        return result;
+    }
+
+
+    public void deleteByContentId(String contentId){
+        jdbcTemplate.update("delete from contents where content_id = ?", contentId);
+    }
+
     private RowMapper<ExecuteDto> executeDtoRowMapper() {
         return (rs, rowNum) -> {
             ExecuteDto executeDto = new ExecuteDto();

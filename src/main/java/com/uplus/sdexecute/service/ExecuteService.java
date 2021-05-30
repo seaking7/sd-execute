@@ -6,4 +6,8 @@ public interface ExecuteService {
 
     ExecuteDto getExecuteByContentId(String contentId);
 
+    Iterable<ExecuteDto> getContentsAll();
+
+    void deleteByContentId(String contentId);
+
 }

@@ -22,4 +22,13 @@ public class ExecuteServiceImpl implements ExecuteService{
         return executeDto;
     }
 
+    @Override
+    public Iterable<ExecuteDto> getContentsAll() {
+        return jdbcExecuteRepository.findContentsAll();
+    }
+
+    @Override
+    public void deleteByContentId(String contentId) {
+        jdbcExecuteRepository.deleteByContentId(contentId);
+    }
 }
